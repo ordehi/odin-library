@@ -1,5 +1,8 @@
 :root {
   font-family: monospace;
+  --app-bg-color: tomato;
+  --app-text-color: white;
+  --form-weight: 600;
 }
 
 
@@ -7,11 +10,31 @@
   box-sizing: border-box;
 }
 
+.book-shelf {
+  display: grid;
+  grid-auto-rows: 1fr;
+  gap: 10px;
+}
+
+.book {
+  display: grid;
+  grid-template-columns: 3fr 2fr 1fr;
+  border-radius: 3px;
+  padding: 1rem;
+  background-color: var(--app-bg-color);
+  color: var(--app-text-color);
+}
+
 .new-book-modal {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
   display: grid;
   width: 200px;
-  background-color: grey;
-  font-weight: 600;
+  background-color: var(--app-bg-color);
+  color: var(--app-text-color);
+  font-weight: var(--form-weight);
   border-radius: 3px;
   box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.3);
 }
@@ -47,4 +70,5 @@ form > * {
   background-color: black;
   color: white;
   cursor: pointer;
+  font-weight: var(--form-weight);
 }
