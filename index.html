@@ -8,45 +8,31 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <h1>Library</h1>
-    <div class="book-shelf">
-      <div class="book">
-        <span class="title">The Lord of the Rings</span>
-        <span class="author">J.R.R. Tolkien</span>
-        <span class="read">Have read</span>
-      </div>
+    <header>
+      <h1>Library</h1>
+      <button class="new-book-btn" id="newBook">+</button>
+    </header>
 
-      <div class="book">
-        <span class="title">A Game of Thrones</span>
-        <span class="author">G.R.R. Martin</span>
-        <span class="read">Have read</span>
-      </div>
+    <div class="book-shelf" id="bookShelf"></div>
 
-      <div class="book">
-        <span class="title">The Name of the Wind</span>
-        <span class="author">Patrick Rothfuss</span>
-        <span class="read">Haven't read</span>
-      </div>
-    </div>
-
-    <div class="new-book-modal">
-      <form action="#" class="book-form">
+    <div class="new-book-modal hide">
+      <form class="book-form">
         <legend>New Book</legend>
         <ul>
           <li class="card-item">
             <label for="title">Title</label>
-            <input type="text" name="title" id="title" />
+            <input type="text" name="title" id="title" required />
           </li>
           <li class="card-item">
             <label for="author">Author</label>
-            <input type="text" name="author" id="author" />
+            <input type="text" name="author" id="author" required />
           </li>
           <li class="card-item">
             <label for="read">Have you read it?</label>
             <input type="checkbox" name="read" id="read" />
           </li>
         </ul>
-        <button id="addbook">Add Book</button>
+        <button id="submitBook">Add Book</button>
       </form>
     </div>
     <script src="script.js"></script>

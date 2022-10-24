@@ -1,6 +1,7 @@
 :root {
   font-family: monospace;
   --app-bg-color: #ff6347;
+  --app-hover-color: #ff6347dd;
   --app-text-color: white;
   --form-weight: 600;
   --modal-transform: translate(-50%, -50%);
@@ -11,6 +12,26 @@
 
 *, *::before, *::after {
   box-sizing: border-box;
+}
+
+header {
+  display: flex;
+  width: 20%;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.new-book-btn {
+  border: none;
+  background-color: var(--app-bg-color);
+  color: var(--app-text-color);
+  font-size: 2rem;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.new-book-btn:hover {
+  background-color: var(--app-hover-color);
 }
 
 .book-shelf {
@@ -29,11 +50,11 @@
 }
 
 .new-book-modal {
+  display: grid;
   position: absolute;
   left: 50%;
   top: 35%;
   transform: var(--modal-transform);
-  display: grid;
   width: 220px;
   z-index: 1;
   padding: 1rem 0 1rem 1rem;
@@ -66,6 +87,10 @@
   height: 100%;
   box-shadow: 5px 5px 3px rgba(0, 0, 0, 0.5);
   border-radius: 3px;
+}
+
+.new-book-modal.hide {
+  display: none;
 }
 
 
