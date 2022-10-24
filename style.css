@@ -42,7 +42,7 @@ header {
 
 .book {
   display: grid;
-  grid-template-columns: 3fr 2fr 1fr 1fr;
+  grid-template-columns: 3fr 2fr repeat(3, 1fr);
   border-radius: 3px;
   padding: 1rem;
   background-color: var(--app-bg-color);
@@ -129,6 +129,10 @@ form > * {
   border: none;
   border-radius: 3px;
   padding: .5rem;
+}
+
+.book button {
+  margin: 0 1rem;
 }
 
 .new-book-modal button, .book button {

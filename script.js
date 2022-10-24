@@ -9,13 +9,38 @@ const newBookModal = document.querySelector('.new-book-modal');
 const myLibrary = [];
 let lastId = 0;
 
+//Add a button on each book’s display to change its read status.
 class Book {
   constructor(title = String, author = String, read = Boolean, id = Number) {
     this.title = title;
     this.author = author;
     this.read = read;
     this.id = id;
+    this.toggleRead = () => {
+      this.read = !this.read;
+      renderRead(this);
+    };
   }
+}
+
+function createBtn(id = '', text, fn, param) {
+  let btn = document.createElement('button');
+  btn.type = 'button';
+  btn.textContent = text;
+  btn.id = id;
+  if (fn) {
+    btn.addEventListener('click', (e) => {
+      fn(param);
+    });
+  }
+
+  return btn;
+}
+
+function buildReadText(readStatus) {
+  let readBtnText = readStatus ? 'Unread' : 'Mark Read';
+  let readNodeText = readStatus ? 'Have read' : "Haven't read";
+  return { readBtnText, readNodeText };
 }
 
 function buildBook(book) {
@@ -25,20 +50,30 @@ function buildBook(book) {
   const titleNode = createSpan(['title']);
   const authorNode = createSpan(['author']);
   const readNode = createSpan(['read']);
-  const removeBtn = document.createElement('button');
-  removeBtn.textContent = 'Delete';
-  removeBtn.addEventListener('click', (e) => {
-    // let id = e.target.parentElement.id.substring(1) * 1;
-    removeBookFromLibrary(book.id);
-  });
+  let readText = buildReadText(book.read);
+  let readBtnText = readText.readBtnText;
+  const readBtn = createBtn('readBtn', readBtnText, book.toggleRead);
 
+  const removeBtn = createBtn(
+    'deleteBtn',
+    'Delete',
+    removeBookFromLibrary,
+    book.id
+  );
   titleNode.textContent = book.title;
   authorNode.textContent = book.author;
-  readNode.textContent = book.read ? 'Have read' : "Haven't read";
+  readNode.textContent = readText.readNodeText;
 
-  bookNode.append(titleNode, authorNode, readNode, removeBtn);
+  bookNode.append(titleNode, authorNode, readNode, readBtn, removeBtn);
 
   return bookNode;
+}
+
+function renderRead(book) {
+  let bookNode = bookShelf.querySelector(`#b${book.id}`);
+  let readText = buildReadText(book.read);
+  bookNode.querySelector('.read').textContent = readText.readNodeText;
+  bookNode.querySelector('#readBtn').textContent = readText.readBtnText;
 }
 
 function renderLibrary(booksNode, library) {
