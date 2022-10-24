@@ -1,1 +1,3 @@
-# odin-library
+# Library
+
+A simple reading tracker web app.

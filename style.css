@@ -1,0 +1,50 @@
+:root {
+  font-family: monospace;
+}
+
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.new-book-modal {
+  display: grid;
+  width: 200px;
+  background-color: grey;
+  font-weight: 600;
+  border-radius: 3px;
+  box-shadow: 2px 2px 5px 3px rgba(0, 0, 0, 0.3);
+}
+
+.new-book-modal legend {
+  font-size: 1.5rem;
+}
+
+.new-book-modal ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+form > * {
+  margin: .5rem;
+}
+
+.card-item {
+  margin: .8rem 0;
+}
+
+.card-item * {
+  margin: .3rem 0;
+}
+
+.new-book-modal button, .new-book-modal input {
+  border: none;
+  border-radius: 3px;
+  padding: .5rem;
+}
+
+.new-book-modal button {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
