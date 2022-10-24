@@ -42,11 +42,21 @@ header {
 
 .book {
   display: grid;
-  grid-template-columns: 3fr 2fr 1fr;
+  grid-template-columns: 3fr 2fr 1fr 1fr;
   border-radius: 3px;
   padding: 1rem;
   background-color: var(--app-bg-color);
   color: var(--app-text-color);
+  align-items: center;
+}
+
+.book * {
+  padding: .5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 600;
 }
 
 .new-book-modal {
@@ -115,13 +125,13 @@ form > * {
   margin: .3rem 0;
 }
 
-.new-book-modal button, .new-book-modal input {
+.new-book-modal button, .new-book-modal input, .book button {
   border: none;
   border-radius: 3px;
   padding: .5rem;
 }
 
-.new-book-modal button {
+.new-book-modal button, .book button {
   background-color: black;
   color: white;
   cursor: pointer;

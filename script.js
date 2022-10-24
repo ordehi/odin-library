@@ -9,18 +9,39 @@ const newBookModal = document.querySelector('.new-book-modal');
 const myLibrary = [];
 
 class Book {
-  constructor(title = String, author = String, read = Boolean) {
+  constructor(title = String, author = String, read = Boolean, id = String) {
     this.title = title;
     this.author = author;
     this.read = read;
+    this.id = id;
   }
 }
 
+function buildBook(book) {
+  const bookNode = document.createElement('div');
+  bookNode.classList.add('book');
+  bookNode.id = book.id;
+  const titleNode = createSpan(['title']);
+  const authorNode = createSpan(['author']);
+  const readNode = createSpan(['read']);
+  const removeBtn = document.createElement('button');
+  removeBtn.textContent = 'Delete';
+
+  titleNode.textContent = book.title;
+  authorNode.textContent = book.author;
+  readNode.textContent = book.read ? 'Have read' : "Haven't read";
+
+  bookNode.append(titleNode, authorNode, readNode, removeBtn);
+
+  return bookNode;
+}
+
 function addBookToLibrary(title, author, read) {
-  let book = new Book(title, author, read);
+  let bookId = `b${myLibrary.length}`;
+  let book = new Book(title, author, read, bookId);
   myLibrary.push(book);
   console.log(myLibrary);
-  let bookNode = buildBook(title, author, read);
+  let bookNode = buildBook(book);
   bookShelf.appendChild(bookNode);
 }
 
@@ -28,22 +49,6 @@ function createSpan(classList) {
   let span = document.createElement('span');
   span.classList.add(...classList);
   return span;
-}
-
-function buildBook(title, author, read) {
-  const book = document.createElement('div');
-  book.classList.add('book');
-  const titleNode = createSpan(['title']);
-  const authorNode = createSpan(['author']);
-  const readNode = createSpan(['read']);
-
-  titleNode.textContent = title;
-  authorNode.textContent = author;
-  readNode.textContent = read ? 'Have read' : "Haven't read";
-
-  book.append(titleNode, authorNode, readNode);
-
-  return book;
 }
 
 newBook.addEventListener('click', () => {
@@ -59,3 +64,5 @@ submitBook.addEventListener('click', (e) => {
     newBookModal.classList.add('hide');
   }
 });
+
+// Add a button on each book’s display to remove the book from the library.
