@@ -16,11 +16,12 @@ class Book {
     this.author = author;
     this.read = read;
     this.id = id;
-    this.toggleRead = () => {
-      this.read = !this.read;
-      renderRead(this);
-    };
   }
+
+  toggleRead = () => {
+    this.read = !this.read;
+    renderRead(this);
+  };
 }
 
 function createBtn(id = '', text, fn, param) {
